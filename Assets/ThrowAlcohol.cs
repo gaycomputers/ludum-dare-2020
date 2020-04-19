@@ -18,15 +18,18 @@ public class ThrowAlcohol : MonoBehaviour
         {
             GameObject p = Instantiate(projectile, projectileSpawn.position, projectileSpawn.rotation);
             Rigidbody r = p.GetComponent<Rigidbody>();
+            Destroy(p,2);
             if (OLD_VELOCITY.Count > 0){
-                r.AddForce(OLD_VELOCITY.Dequeue(), ForceMode.Impulse);
+                Vector3 displace = Input.mousePosition - OLD_VELOCITY.Dequeue();
+
+                r.AddForce(projectileSpawn.forward * displace[1] * speedMultiplierx + projectileSpawn.right * displace[0] * speedMultipliery, ForceMode.Impulse);
                 //r.AddForce(Input.mousePosition, ForceMode.Force)
             }
         }
     }
     void FixedUpdate(){
         if (Input.GetButton("Fire1")){
-            OLD_VELOCITY.Enqueue((projectileSpawn.right * Input.GetAxis("Mouse X") * speedMultiplierx) + (projectileSpawn.forward * Input.GetAxis("Mouse Y") * speedMultipliery));
+            OLD_VELOCITY.Enqueue(Input.mousePosition);
             if (OLD_VELOCITY.Count > FRAMES_AGO_THROW_VELOCITY){
                 OLD_VELOCITY.Dequeue();
             } 

@@ -154,9 +154,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpawn: {fileID: 578016732}
   projectile: {fileID: 2237765021549226374, guid: 9a0351e9a52a7fa44bc183bbe401d346, type: 3}
-  speedMultiplierx: 25
-  speedMultipliery: 50
-  FRAMES_AGO_THROW_VELOCITY: 5
+  speedMultiplierx: 0.1
+  speedMultipliery: 0.1
+  FRAMES_AGO_THROW_VELOCITY: 2
 --- !u!4 &578016732
 Transform:
   m_ObjectHideFlags: 0
