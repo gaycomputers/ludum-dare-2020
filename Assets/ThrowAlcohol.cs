@@ -9,7 +9,7 @@ public class ThrowAlcohol : MonoBehaviour
     [SerializeField] private GameObject projectile;
     [SerializeField] private float speedMultiplierx;
     [SerializeField] private float speedMultipliery;
-    [SerializeField] private int FRAMES_AGO_THROW_VELOCITY = 4;
+    [SerializeField] private int FRAMES_AGO_THROW_VELOCITY = 2;
     private Queue<Vector3> OLD_VELOCITY = new Queue<Vector3>();
     // Update is called once per frame
     void Update()
@@ -19,7 +19,8 @@ public class ThrowAlcohol : MonoBehaviour
             GameObject p = Instantiate(projectile, projectileSpawn.position, projectileSpawn.rotation);
             Rigidbody r = p.GetComponent<Rigidbody>();
             if (OLD_VELOCITY.Count > 0){
-                r.AddForce(OLD_VELOCITY.Dequeue(), ForceMode.VelocityChange);
+                r.AddForce(OLD_VELOCITY.Dequeue(), ForceMode.Impulse);
+                //r.AddForce(Input.mousePosition, ForceMode.Force)
             }
         }
     }
