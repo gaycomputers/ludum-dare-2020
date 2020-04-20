@@ -18,6 +18,8 @@ public class Hand : MonoBehaviour
         _throwAlcohol = FindObjectOfType<ThrowAlcohol>();
         _canvas = GetComponentInParent<Canvas>();
         _graphicRaycaster = GetComponentInParent<GraphicRaycaster>();
+        // Sets the default cursor to invisible
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
