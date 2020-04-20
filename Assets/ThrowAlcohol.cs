@@ -14,6 +14,7 @@ public class ThrowAlcohol : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
+        /*
         if (Input.GetButtonUp("Fire1"))
         {
             GameObject p = Instantiate(projectile, projectileSpawn.position, projectileSpawn.rotation);
@@ -26,7 +27,25 @@ public class ThrowAlcohol : MonoBehaviour
                 //r.AddForce(Input.mousePosition, ForceMode.Force)
             }
         }
+        */
     }
+
+    public void Throw(GameObject alcohol)
+    {
+        GameObject p = Instantiate(alcohol, projectileSpawn.position, projectileSpawn.rotation);
+        Rigidbody r = p.GetComponent<Rigidbody>();
+        Destroy(p, 2);
+        if (OLD_VELOCITY.Count > 0)
+        {
+            Vector3 displace = Input.mousePosition - OLD_VELOCITY.Dequeue();
+
+            r.AddForce(
+                projectileSpawn.forward * displace[1] * speedMultiplierx +
+                projectileSpawn.right * displace[0] * speedMultipliery, ForceMode.Impulse);
+            //r.AddForce(Input.mousePosition, ForceMode.Force)
+        }
+    }
+    
     void FixedUpdate(){
         if (Input.GetButton("Fire1")){
             OLD_VELOCITY.Enqueue(Input.mousePosition);
