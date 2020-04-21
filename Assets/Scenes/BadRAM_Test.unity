@@ -1339,7 +1339,7 @@ MonoBehaviour:
   projectile: {fileID: 2237765021549226374, guid: 9a0351e9a52a7fa44bc183bbe401d346, type: 3}
   speedMultiplierx: 0.1
   speedMultipliery: 0.18
-  FRAMES_AGO_THROW_VELOCITY: 2
+  FRAMES_AGO_THROW_VELOCITY: 1
 --- !u!4 &578016732
 Transform:
   m_ObjectHideFlags: 0
@@ -1704,7 +1704,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &728058457
 GameObject:
@@ -2194,7 +2194,7 @@ MonoBehaviour:
   - {fileID: 1201446296}
   - {fileID: 1438722880}
   ExitSpot: {fileID: 983691564}
-  movementSpeed: 0.005
+  movementSpeed: 0.05
 --- !u!4 &1000286237
 Transform:
   m_ObjectHideFlags: 0
@@ -2888,7 +2888,7 @@ MonoBehaviour:
   - {fileID: 1201446296}
   - {fileID: 1438722880}
   ExitSpot: {fileID: 983691564}
-  movementSpeed: 0.005
+  movementSpeed: 0.05
 --- !u!4 &1344426266
 Transform:
   m_ObjectHideFlags: 0
@@ -3538,7 +3538,7 @@ RectTransform:
   m_Children:
   - {fileID: 418996667}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4107,7 +4107,7 @@ MonoBehaviour:
   - {fileID: 1201446296}
   - {fileID: 1438722880}
   ExitSpot: {fileID: 983691564}
-  movementSpeed: 0.005
+  movementSpeed: 0.05
 --- !u!4 &2032372560
 Transform:
   m_ObjectHideFlags: 0
@@ -4121,7 +4121,7 @@ Transform:
   m_Children:
   - {fileID: 521749238}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: -21.593, z: 0}
 --- !u!135 &2032372561
 SphereCollider:
@@ -4307,7 +4307,7 @@ MonoBehaviour:
   - {fileID: 1201446296}
   - {fileID: 1438722880}
   ExitSpot: {fileID: 983691564}
-  movementSpeed: 0.005
+  movementSpeed: 0.05
 --- !u!4 &2065855805
 Transform:
   m_ObjectHideFlags: 0

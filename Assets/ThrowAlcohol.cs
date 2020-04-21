@@ -28,6 +28,15 @@ public class ThrowAlcohol : MonoBehaviour
             }
         }
         */
+        if (Input.GetButton("Fire1")){
+            OLD_VELOCITY.Enqueue(Input.mousePosition);
+            if (OLD_VELOCITY.Count > FRAMES_AGO_THROW_VELOCITY){
+                OLD_VELOCITY.Dequeue();
+            } 
+        }
+        else{
+            OLD_VELOCITY.Clear();
+        }
     }
 
     public void Throw(GameObject alcohol)
@@ -47,14 +56,6 @@ public class ThrowAlcohol : MonoBehaviour
     }
     
     void FixedUpdate(){
-        if (Input.GetButton("Fire1")){
-            OLD_VELOCITY.Enqueue(Input.mousePosition);
-            if (OLD_VELOCITY.Count > FRAMES_AGO_THROW_VELOCITY){
-                OLD_VELOCITY.Dequeue();
-            } 
-        }
-        else{
-            OLD_VELOCITY.Clear();
-        }
+        
     }
 }
