@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - AlcoholSource
+  - Drink
+  - Gun
+  - JukeboxRemote
+  - Alcohol
+  - GunSource
   layers:
   - Default
   - TransparentFX

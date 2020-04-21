@@ -9,7 +9,7 @@ public class AIScript : MonoBehaviour
     public List<GameObject> wanderList;
     public List<GameObject> drinkList;
     public List<GameObject> danceList;
-    public GameObject exitSpot;
+    public GameObject ExitSpot;
     enum state {
         Wander,
         Drink,
@@ -23,7 +23,7 @@ public class AIScript : MonoBehaviour
     private bool destinationSelected = false;
     private GameObject destination;
     private float waiting = 0.0f;
-    private float timeout = 30.0f;
+    private float timeout = 10.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -50,8 +50,8 @@ public class AIScript : MonoBehaviour
         if (other.gameObject.CompareTag("Drink")){
             destinationSelected = false;
             Destroy(other.gameObject);
-            waiting = 0;
-            currentState = state.Wander;
+            waiting = Time.time;
+            currentState = state.Dance;
         }
     }
 
@@ -77,14 +77,17 @@ public class AIScript : MonoBehaviour
             if (destinationSelected){
                 if(destination.transform.position == GetComponent<Transform>().position){
                     //await beer
-                    waiting += Time.deltaTime;
-                    if (waiting > timeout){
+                    
+                    //Debug.Log(Time.time - waiting);
+                    if (Time.time - waiting > timeout){
+                        destinationSelected = false;
                         currentState = state.Exit;
                     }
                 }
                 else{
                     //go to destination
                     goto2();
+                    
                 }
             }
             else{
@@ -96,14 +99,22 @@ public class AIScript : MonoBehaviour
             if (destinationSelected){
                 if(destination.transform.position == GetComponent<Transform>().position){
                     //dance
+                    destinationSelected = false;
+                    //Debug.Log(waiting);
+                    
+                    if (Time.time - waiting > timeout){
+                        currentState = state.Drink;
+                        waiting = Time.time;
+                    }
                 }
                 else{
                     //go to destination
                     goto2();
+                    
                 }
             }
             else{
-                destination = wanderList[random.Next(danceList.Count)];
+                destination = wanderList[random.Next(wanderList.Count)];
                 destinationSelected = true;
             }
         }
@@ -111,6 +122,8 @@ public class AIScript : MonoBehaviour
             if (destinationSelected){
                 if(destination.transform.position == GetComponent<Transform>().position){
                     //dissapear
+                    currentState = state.Dance;
+                    waiting = Time.time;
                 }
                 else{
                     //go to destination
@@ -118,7 +131,7 @@ public class AIScript : MonoBehaviour
                 }
             }
             else{
-                destination = exitSpot;
+                destination = ExitSpot;
                 destinationSelected = true;
             }
         }

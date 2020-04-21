@@ -18,8 +18,6 @@ public class Hand : MonoBehaviour
         _throwAlcohol = FindObjectOfType<ThrowAlcohol>();
         _canvas = GetComponentInParent<Canvas>();
         _graphicRaycaster = GetComponentInParent<GraphicRaycaster>();
-        // Sets the default cursor to invisible
-        Cursor.visible = false;
     }
 
     // Update is called once per frame
@@ -37,6 +35,14 @@ public class Hand : MonoBehaviour
                 {
                     _heldObject = Instantiate(hit.transform.GetComponent<AlcoholSource>().alcoholPrefab, transform.parent).transform;
                 }
+                if (hit.transform.CompareTag("Gun")) 
+                {
+                    _heldObject = Instantiate(hit.transform.GetComponent<GunSource>().gunPrefab, transform.parent).transform;
+                }
+                if (hit.transform.CompareTag("JukeboxRemote")) 
+                {
+                    hit.transform.GetComponent<Radio>().NextSong();
+                }
             }
         }
         
@@ -46,9 +52,18 @@ public class Hand : MonoBehaviour
             
             if (Input.GetButtonUp("Fire1"))
             {
-                _throwAlcohol.Throw(_heldObject.GetComponent<Alcohol>().Throwable);
-                Destroy(_heldObject.gameObject);
-                _heldObject = null;
+                if (_heldObject.CompareTag("Alcohol"))
+                {   
+                    _throwAlcohol.Throw(_heldObject.GetComponent<Alcohol>().Throwable);
+                    Destroy(_heldObject.gameObject);
+                    _heldObject = null;
+                }
+                else if (_heldObject.CompareTag("Gun"))
+                {
+                    //shoot gun
+                    Destroy(_heldObject.gameObject);
+                    _heldObject = null;
+                }
             }
         }
     }
